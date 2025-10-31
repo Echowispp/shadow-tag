@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://bmortnewqqpc4"]
+[gd_scene load_steps=4 format=3 uid="uid://bmortnewqqpc4"]
 
 [ext_resource type="PackedScene" uid="uid://dmda2des0ap1f" path="res://player.tscn" id="1_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://p77obxtjoavw" path="res://shadow.tscn" id="2_h2yge"]
+[ext_resource type="PackedScene" uid="uid://2pu3wat1p8ss" path="res://light_sources.tscn" id="3_h2yge"]
 
 [node name="main" type="Node2D"]
 
@@ -10,3 +11,6 @@
 [node name="shadow" parent="." instance=ExtResource("2_h2yge")]
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
+texture_filter = 1
+
+[node name="LightSources" parent="." instance=ExtResource("3_h2yge")]

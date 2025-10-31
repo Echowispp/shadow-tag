@@ -1,0 +1,22 @@
+[gd_scene load_steps=2 format=3 uid="uid://2pu3wat1p8ss"]
+
+[ext_resource type="Script" uid="uid://corcg2atdat72" path="res://lamp.gd" id="1_cv5nr"]
+
+[node name="LightSources" type="Node2D"]
+
+[node name="Lamp1" type="Node2D" parent="."]
+script = ExtResource("1_cv5nr")
+
+[node name="PointLight2D" type="PointLight2D" parent="Lamp1"]
+
+[node name="Area2D" type="Area2D" parent="Lamp1"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Lamp1/Area2D"]
+
+[node name="Lamp2" type="Node2D" parent="."]
+
+[node name="PointLight2D" type="PointLight2D" parent="Lamp2"]
+
+[node name="Area2D" type="Area2D" parent="Lamp2"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Lamp2/Area2D"]
