@@ -76,7 +76,7 @@ tile_map_data = PackedByteArray("AADw//T/AQAAAAkAAADw//X/AQABAAoAAADw//b/AQACAAo
 tile_set = SubResource("TileSet_7mycd")
 
 [node name="ForegroundTileMapLayer" type="TileMapLayer" parent="."]
-z_index = 3
+z_index = 4
 tile_set = SubResource("TileSet_5vw27")
 
 [node name="LightSources" parent="." instance=ExtResource("3_h2yge")]
