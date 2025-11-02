@@ -220,19 +220,20 @@ autoplay = "idle"
 
 [node name="PlayerFlashlight" type="PointLight2D" parent="."]
 z_index = 2
-color = Color(0.6627451, 0.6627451, 0.33333334, 1)
-energy = 3.0
+color = Color(0.6627451, 0.5647059, 0.33333334, 1)
+energy = 1.5
+shadow_enabled = true
 texture = ExtResource("3_i3pqv")
-offset = Vector2(0, -200)
-texture_scale = 0.4
+offset = Vector2(0, -100)
+texture_scale = 0.2
 
 [node name="Area2D" type="Area2D" parent="PlayerFlashlight"]
 collision_layer = 2
-collision_mask = 4
+collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerFlashlight/Area2D"]
-position = Vector2(0, -150)
-scale = Vector2(4, 6)
+position = Vector2(0, -70)
+scale = Vector2(2, 3)
 shape = SubResource("CircleShape2D_i3pqv")
 
 [node name="Camera2D" type="Camera2D" parent="."]

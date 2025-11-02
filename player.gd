@@ -1,13 +1,18 @@
 extends CharacterBody2D;
 
 
-@export var speed = 50.0;
+@export var speed = 100.0;
 @export var flashlight_timer_max = 10;
 var flashlight_timer = flashlight_timer_max;
 
 @onready var animated_sprite = $AnimatedSprite2D;
 @onready var flashlight = $PlayerFlashlight;
 @onready var flashlight_trigger = $PlayerFlashlight/Area2D/CollisionShape2D
+
+func _ready():
+
+	for exit in get_tree().get_nodes_in_group("exit"):
+		exit.body_entered.connect(_on_exit_reached)
 
 ## CHECK GDOCS TODO!!!!
 ## CHECK GDOCS TODO!!!!
@@ -59,3 +64,15 @@ func _physics_process(delta: float) -> void:
 		flashlight_trigger.disabled = true;
 		if flashlight_timer < flashlight_timer_max and not Input.is_action_pressed("flashlight_on"):
 			flashlight_timer += (delta * 0.5);
+
+
+func die():
+	var death_screen = preload("res://death_screen.tscn").instantiate()
+	get_tree().current_scene.add_child(death_screen)
+	get_tree().paused = true
+
+func _on_exit_reached(body):
+	if body == self:
+		var win_screen = preload("res://win_screen.tscn").instantiate()
+		get_tree().current_scene.add_child(win_screen)
+		get_tree().paused = true
