@@ -38,7 +38,7 @@ func _spawn_lantern_lights():
 			if shadow:
 				area.area_entered.connect(shadow._on_area_entered)
 				area.area_exited.connect(shadow._on_area_exited)
-				
+			
 			area.add_child(collision)
 			light.add_child(area)
 			lights_container.add_child(light);

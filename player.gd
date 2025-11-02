@@ -24,7 +24,9 @@ func _ready():
 ## CHECK GDOCS TODO!!!!
 #when reviewing code, ignore the above. I'm trying to use a todo list between sessions to remember what I need to do next, I'm afraid I'll forget it otherwise. 
 func _physics_process(delta: float) -> void:
+	
 	velocity = Vector2.ZERO;
+	
 	if (Input.is_action_pressed("move_right")):
 		velocity.x += 1;
 	if (Input.is_action_pressed("move_left")):
@@ -36,8 +38,10 @@ func _physics_process(delta: float) -> void:
 	if velocity.length() > 0:
 		velocity = velocity.normalized() * speed;
 		move_and_slide();
+		
 		var movement_angle_rad = velocity.angle();
 		var movement_angle = movement_angle_rad * 180 / PI;
+		
 		if movement_angle > -45 and movement_angle < 45:
 				animated_sprite.play("walk_h");
 				animated_sprite.flip_h = false;
@@ -52,6 +56,7 @@ func _physics_process(delta: float) -> void:
 			animated_sprite.flip_h = false;
 	else:
 		animated_sprite.play("idle");
+	
 	if flashlight_timer > 0 and Input.is_action_pressed("flashlight_on"):
 		var mouse_pos = get_global_mouse_position();
 		flashlight.look_at(mouse_pos);
@@ -62,17 +67,22 @@ func _physics_process(delta: float) -> void:
 	else:
 		flashlight.enabled = false;
 		flashlight_trigger.disabled = true;
+		
 		if flashlight_timer < flashlight_timer_max and not Input.is_action_pressed("flashlight_on"):
 			flashlight_timer += (delta * 0.5);
 
 
 func die():
+	
 	var death_screen = preload("res://death_screen.tscn").instantiate()
+	
 	get_tree().current_scene.add_child(death_screen)
 	get_tree().paused = true
 
 func _on_exit_reached(body):
 	if body == self:
+		
 		var win_screen = preload("res://win_screen.tscn").instantiate()
+		
 		get_tree().current_scene.add_child(win_screen)
 		get_tree().paused = true
